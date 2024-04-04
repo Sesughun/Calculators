@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .container {
+                display: grid;
+                place-items: center; /* Centers both horizontally and vertically */
+                background-color: blanchedalmond;
+            }
+            .headB {
+                border-radius: 8px;
+                padding: 12px;
+                border-color: #ff6600;
+            }
+            .headB:hover{
+                background-color: #ff7811;
+            }
+            .numbers:hover{
+                background-color: #ff7811;
+            }
+            .numbers{
+                padding: 32px;
+                border-radius: 25px;
+                border-color: #ff6600;
+                font-size: 19px;
+                font-weight: bold;
+                color: #cc5500;
+            }
+            button:active{
+                transform: translateY(4px);
+            }
+            input{
+                width: 45%;
+                padding: 12px 20px;
+                border-color: #ff6600;
+                background-color: #ffaf7a;
+                
+            }
+            #displays{
+                width: 420px;
+                border: 8px solid #ff6600 ;
+                padding: 12px 20px;
+                ;
+            }          
+            div{
+                color: #ff7811;
+            
+            }
+            h1{
+                color: #ff6600;
+            }
+        </style>
+
+    </head>
+    <body class="container">
+        <h1>CALCULATOR</h1>
+        <div>
+            <button class="headB">Simple Calculator</button>
+            <button class="headB"><a href="compound.html" style="text-decoration: none; color: inherit;">Compound Interest</a></button>
+        </div>
+        <br>
+        <div id="displays">       
+
+        <div id="display" style="text-align: right;">0</div>
+        <div id="display2" style="font-size: 40px; font-weight: bold; text-align: right;">0</div>
+        </div>
+        <br>
+        <div >
+            <div>
+                <button class="numbers" onclick="AddtoDisplay('1')">1
+                    
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('2')">2
+
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('3')">3
+
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('+')">+
+
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('(')">(
+
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('backspace')"><=
+
+                </button>
+
+            </div>
+            <br>
+            
+            <div>
+                <button class="numbers" onclick="AddtoDisplay('4')">4
+
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('5')">5
+
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('6')">6
+                    
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('*')">*
+
+                </button>
+                <button class="numbers" onclick="AddtoDisplay(')')">)
+
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('10**(')">10^x
+
+                </button>
+            </div>
+            <br>
+            <div>
+                <button class="numbers" onclick="AddtoDisplay('7')">7
+
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('8')">8
+
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('9')">9                    
+                    
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('-')">-
+
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('!')">!                 
+                    
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('**2')">x^2
+
+                </button>
+            </div>
+            <br>
+            <div>
+                <button class="numbers" onclick="AddtoDisplay('.')">.
+
+                </button>
+                
+                <button class="numbers" onclick="AddtoDisplay('0')">0
+
+                </button>
+                <button class="numbers" onclick="equalTo()">=
+
+                </button>
+                
+                <button class="numbers" onclick="AddtoDisplay('/')">/
+
+                </button>
+                <button class="numbers" onclick="Clear()">AC                 
+                    
+                </button>
+                <button class="numbers" onclick="AddtoDisplay('**')">x^y
+
+                </button>
+                
+            
+            </div>
+            <br>
+            
+           
+        </div>
+
+
+        <script>
+            let equation='';
+            function AddtoDisplay(val){             
+                let value='';
+                let currentValue = display.textContent;
+
+                value=document.getElementById('display');
+                if (currentValue === '0') {
+                    currentValue = '';
+                }
+                value.textContent+=val;
+                equation=value.textContent;
+                
+                
+            }
+            function Clear(){
+                const value=document.getElementById('display');
+                value.textContent='0';
+                const value2=document.getElementById('display2');
+                value2.textContent='0';
+                equation='';
+            }
+            function equalTo(){                
+                let result = eval(equation);
+                if (isNaN(result)) {
+                document.getElementById('display2').textContent = 'Error';
+            } else {
+                document.getElementById('display2').textContent = result;
+            }
+                
+            }
+            
+            document.addEventListener('keypress', function(event) {
+                if (event.key == 'Enter') {
+                    equalTo();
+                }
+            });
+
+
+        </script>
+    </body>
+</html>
